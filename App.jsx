@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useState } from "react";
 import PokeItem from "./src/components/Character";
 import HomeScreen from "./src/screens/HomeScreen";
+import { Provider } from "react-redux";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);
@@ -28,9 +29,11 @@ export default function App() {
   console.log(data.results);
 
   return (
-    <SafeAreaView style={tw`flex flex-1 bg-[#121212]`}>
-      <HomeScreen data={data} />
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={tw`flex flex-1 bg-[#121212]`}>
+        <HomeScreen data={data} />
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </Provider>
   );
 }
