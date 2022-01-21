@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import tw from "twrnc";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 export default function Character({ name, gender, birth }) {
   return (
     <View

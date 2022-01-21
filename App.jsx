@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import PokeItem from "./src/components/Character";
 import HomeScreen from "./src/screens/HomeScreen";
 import { Provider } from "react-redux";
+import store from "./src/store/store";
+import CharacterDetailedScreen from "./src/screens/CharacterDetailedScreen";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);
@@ -26,12 +28,12 @@ export default function App() {
   useEffect(() => {
     getMovies();
   }, []);
-  console.log(data.results);
 
   return (
     <Provider store={store}>
       <SafeAreaView style={tw`flex flex-1 bg-[#121212]`}>
-        <HomeScreen data={data} />
+        {/* <HomeScreen data={data} /> */}
+        <CharacterDetailedScreen data={data.results} />
         <StatusBar style="auto" />
       </SafeAreaView>
     </Provider>
