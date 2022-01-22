@@ -1,11 +1,13 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import tw from "twrnc";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-export default function Character({ name, gender, birth }) {
+export default function Character({ name, gender, birth, setUrl, url }) {
   return (
-    <View
+    <TouchableOpacity
+      key={name}
       style={tw`flex flex-row items-center mb-4 border-solid border-[#464646] border-b pb-4`}
+      onPress={() => setUrl(url)}
     >
       <View style={tw`rounded-full w-12 h-12 bg-[#242424] mr-4`}></View>
       <View style={tw`flex-grow`}>
@@ -17,6 +19,6 @@ export default function Character({ name, gender, birth }) {
           birth: <Text style={tw`font-bold`}>{birth}</Text>
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

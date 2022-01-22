@@ -11,9 +11,10 @@ import CharacterDetailedScreen from "./src/screens/CharacterDetailedScreen";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);
+  const [url, setUrl] = useState("https://swapi.dev/api/people/1/");
   const [data, setData] = useState([]);
 
-  const getMovies = async () => {
+  const getData = async () => {
     try {
       const response = await fetch("https://swapi.dev/api/people/");
       const json = await response.json();
@@ -26,14 +27,14 @@ export default function App() {
   };
 
   useEffect(() => {
-    getMovies();
+    getData();
   }, []);
 
   return (
     <Provider store={store}>
       <SafeAreaView style={tw`flex flex-1 bg-[#121212]`}>
-        {/* <HomeScreen data={data} /> */}
-        <CharacterDetailedScreen data={data.results} />
+        {/* <HomeScreen data={data} setUrl={setUrl} /> */}
+        <CharacterDetailedScreen url={url} />
         <StatusBar style="auto" />
       </SafeAreaView>
     </Provider>
