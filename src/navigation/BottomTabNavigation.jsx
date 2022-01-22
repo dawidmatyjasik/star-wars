@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import CharacterDetailedScreen from "../screens/CharacterDetailedScreen";
 import { Entypo } from "@expo/vector-icons";
+import AboutScreen from "../screens/AboutScreen";
+import { AntDesign } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,6 +32,25 @@ const BottomTabNavigation = ({ data, setUrl }) => {
       >
         {() => <HomeScreen data={data} setUrl={setUrl} />}
       </Tab.Screen>
+      <Tab.Screen
+        name="About"
+        component={AboutScreen}
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <AntDesign name="question" size={focused ? 30 : 25} color={color} />
+          ),
+        }}
+      />
+      {/*       <Tab.Screen
+        name="Home"
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <Entypo name="home" size={focused ? 30 : 25} color={color} />
+          ),
+        }}
+      >
+        {() => <HomeScreen data={data} setUrl={setUrl} />}
+      </Tab.Screen> */}
     </Tab.Navigator>
   );
 };
