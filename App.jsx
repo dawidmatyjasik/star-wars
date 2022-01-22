@@ -8,6 +8,8 @@ import HomeScreen from "./src/screens/HomeScreen";
 import { Provider } from "react-redux";
 import store from "./src/store/store";
 import CharacterDetailedScreen from "./src/screens/CharacterDetailedScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import Navigation from "./src/navigation/Navigation";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);
@@ -32,11 +34,20 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <SafeAreaView style={tw`flex flex-1 bg-[#121212]`}>
-        {/* <HomeScreen data={data} setUrl={setUrl} /> */}
-        <CharacterDetailedScreen url={url} />
-        <StatusBar style="auto" />
-      </SafeAreaView>
+      <NavigationContainer
+        theme={{
+          colors: {
+            background: "#121212",
+          },
+        }}
+      >
+        <SafeAreaView style={tw`flex flex-1 bg-[#121212]`}>
+          {/* <HomeScreen data={data} setUrl={setUrl} /> */}
+          {/* <CharacterDetailedScreen url={url} /> */}
+          <Navigation data={data} setUrl={setUrl} url={url} />
+          <StatusBar style="auto" />
+        </SafeAreaView>
+      </NavigationContainer>
     </Provider>
   );
 }
