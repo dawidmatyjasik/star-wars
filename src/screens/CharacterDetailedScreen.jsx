@@ -2,12 +2,14 @@ import { View, Text, FlatList } from "react-native";
 import { Ionicons, EvilIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import tw from "twrnc";
+import { useNavigation } from "@react-navigation/native";
 
 const CharacterDetailedScreen = ({
   url = "https://swapi.dev/api/people/1/",
 }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const navigation = useNavigation();
 
   const getData = async () => {
     try {
@@ -24,7 +26,6 @@ const CharacterDetailedScreen = ({
   useEffect(() => {
     getData();
   }, []);
-  console.log(data);
 
   return (
     <View style={tw`flex`}>
@@ -34,6 +35,7 @@ const CharacterDetailedScreen = ({
           size={30}
           color="white"
           style={tw`ml-2`}
+          onPress={() => navigation.goBack()}
         />
         <View style={tw`mx-auto`}>
           <Text style={tw`mx-auto text-white uppercase font-bold`}>
