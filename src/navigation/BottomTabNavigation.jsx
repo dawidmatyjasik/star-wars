@@ -9,7 +9,12 @@ import { AntDesign } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigation = ({ data, setUrl }) => {
+const BottomTabNavigation = ({
+  data,
+  setUrl,
+  filteredData,
+  setFilteredData,
+}) => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -30,7 +35,14 @@ const BottomTabNavigation = ({ data, setUrl }) => {
           ),
         }}
       >
-        {() => <HomeScreen data={data} setUrl={setUrl} />}
+        {() => (
+          <HomeScreen
+            data={data}
+            setUrl={setUrl}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+          />
+        )}
       </Tab.Screen>
       <Tab.Screen
         name="About"
@@ -41,16 +53,6 @@ const BottomTabNavigation = ({ data, setUrl }) => {
           ),
         }}
       />
-      {/*       <Tab.Screen
-        name="Home"
-        options={{
-          tabBarIcon: ({ focused, color }) => (
-            <Entypo name="home" size={focused ? 30 : 25} color={color} />
-          ),
-        }}
-      >
-        {() => <HomeScreen data={data} setUrl={setUrl} />}
-      </Tab.Screen> */}
     </Tab.Navigator>
   );
 };

@@ -13,14 +13,16 @@ import Navigation from "./src/navigation/Navigation";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);
-  const [url, setUrl] = useState("https://swapi.dev/api/people/1/");
+  const [url, setUrl] = useState("");
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const getData = async () => {
     try {
       const response = await fetch("https://swapi.dev/api/people/");
       const json = await response.json();
       setData(json);
+      setFilteredData(json);
     } catch (error) {
       console.error(error);
     } finally {
@@ -42,10 +44,22 @@ export default function App() {
         }}
       >
         <SafeAreaView style={tw`flex flex-1 bg-[#121212]`}>
-          {/* <HomeScreen data={data} setUrl={setUrl} /> */}
-          {/* <CharacterDetailedScreen url={url} /> */}
-          <Navigation data={data} setUrl={setUrl} url={url} />
-          <StatusBar style="auto" />
+          {isLoading ? (
+            <View style={tw`flex flex-grow items-center justify-center`}>
+              <Text style={tw`text-white`}>Loading...</Text>
+            </View>
+          ) : (
+            <>
+              <Navigation
+                data={data}
+                filteredData={filteredData}
+                setFilteredData={setFilteredData}
+                setUrl={setUrl}
+                url={url}
+              />
+              <StatusBar style="auto" />
+            </>
+          )}
         </SafeAreaView>
       </NavigationContainer>
     </Provider>
