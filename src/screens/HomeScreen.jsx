@@ -8,7 +8,6 @@ export default function HomeScreen({ data, setUrl }) {
       data={data.results}
       renderItem={({ item }) => (
         <Character
-          key={Math.random()}
           name={item.name}
           birth={item.birth_year}
           gender={item.gender}
@@ -16,6 +15,7 @@ export default function HomeScreen({ data, setUrl }) {
           url={item.url}
         />
       )}
+      keyExtractor={(item) => item.name}
     />
   );
 }

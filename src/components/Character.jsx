@@ -14,7 +14,6 @@ export default function Character({ name, gender, birth, setUrl, url }) {
 
   return (
     <TouchableOpacity
-      key={name}
       style={tw`flex flex-row items-center mb-4 border-solid border-[#464646] border-b pb-4`}
       onPress={handlePress}
     >
