@@ -1,8 +1,6 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
-import CharacterDetailedScreen from "../screens/CharacterDetailedScreen";
 import { Entypo } from "@expo/vector-icons";
 import AboutScreen from "../screens/AboutScreen";
 import { AntDesign } from "@expo/vector-icons";

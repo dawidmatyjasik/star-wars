@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text } from "react-native";
 import { Ionicons, EvilIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import tw from "twrnc";

@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import tw from "twrnc";
-import { Ionicons, EvilIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const AboutScreen = () => {

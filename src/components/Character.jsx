@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import tw from "twrnc";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Character({ name, gender, birth, setUrl, url }) {

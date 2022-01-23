@@ -1,5 +1,5 @@
-import { View, Text, FlatList, TextInput, StyleSheet } from "react-native";
-import React, { useEffect, useState } from "react";
+import { View, FlatList, TextInput } from "react-native";
+import React, { useState } from "react";
 import Character from "../components/Character";
 import tw from "twrnc";
 import { Picker } from "@react-native-picker/picker";
@@ -12,7 +12,6 @@ export default function HomeScreen({
 }) {
   const [text, setText] = useState("");
   const [selected, setSelected] = useState("az");
-  // const [filteredData, setFilteredData] = useState([]);
 
   const handleSearch = (text) => {
     if (text) {
