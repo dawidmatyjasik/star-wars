@@ -2,7 +2,7 @@ import { View, Text, FlatList, TextInput, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import Character from "../components/Character";
 import tw from "twrnc";
-import RNPickerSelect from "react-native-picker-select";
+import { Picker } from "@react-native-picker/picker";
 
 export default function HomeScreen({
   data,
@@ -11,6 +11,7 @@ export default function HomeScreen({
   setFilteredData,
 }) {
   const [text, setText] = useState("");
+  const [selected, setSelected] = useState("az");
   // const [filteredData, setFilteredData] = useState([]);
 
   const handleSearch = (text) => {
@@ -26,19 +27,36 @@ export default function HomeScreen({
       setFilteredData(data);
       setText(text);
     }
-    console.log(filteredData);
   };
-  console.log(filteredData);
+
+  const handleSelect = (itemValue) => {
+    setSelected(itemValue);
+    if (itemValue === "az") {
+      data.results.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (itemValue === "za") {
+      data.results.sort((a, b) => b.name.localeCompare(a.name));
+    }
+  };
 
   return (
     <View>
       <View style={tw`flex flex-row mb-4`}>
         <TextInput
-          style={tw`border border-[#797979] rounded border-solid text-white flex-grow`}
+          style={tw`border border-[#797979] rounded border-solid text-white flex-grow pl-2`}
           placeholder="Search..."
           placeholderTextColor="white"
           onChangeText={(text) => handleSearch(text)}
         />
+
+        <Picker
+          selectedValue={selected}
+          onValueChange={(itemValue, itemIndex) => handleSelect(itemValue)}
+          style={tw`w-2/5 text-white border border-[#797979] rounded border-solid`}
+          dropdownIconColor={"white"}
+        >
+          <Picker.Item label="A-Z" value="az" />
+          <Picker.Item label="Z-A" value="za" />
+        </Picker>
       </View>
       <FlatList
         data={text == 0 ? filteredData.results : filteredData}
