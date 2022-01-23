@@ -1,5 +1,5 @@
 import { View, FlatList, TextInput } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Character from "../components/Character";
 import tw from "twrnc";
 import { Picker } from "@react-native-picker/picker";
@@ -11,7 +11,7 @@ export default function HomeScreen({
   setFilteredData,
 }) {
   const [text, setText] = useState("");
-  const [selected, setSelected] = useState("az");
+  const [selected, setSelected] = useState("default");
 
   const handleSearch = (text) => {
     if (text) {
@@ -30,7 +30,8 @@ export default function HomeScreen({
 
   const handleSelect = (itemValue) => {
     setSelected(itemValue);
-    if (itemValue === "az") {
+    if (itemValue === "default") return;
+    else if (itemValue === "az") {
       data.results.sort((a, b) => a.name.localeCompare(b.name));
     } else if (itemValue === "za") {
       data.results.sort((a, b) => b.name.localeCompare(a.name));
@@ -53,6 +54,7 @@ export default function HomeScreen({
           style={tw`w-2/5 text-white border border-[#797979] rounded border-solid`}
           dropdownIconColor={"white"}
         >
+          <Picker.Item label="Default" value="default" enabled={false} />
           <Picker.Item label="A-Z" value="az" />
           <Picker.Item label="Z-A" value="za" />
         </Picker>
