@@ -57,7 +57,7 @@ export default function App() {
                 setUrl={setUrl}
                 url={url}
               />
-              <StatusBar style="auto" />
+              <StatusBar style="auto" barStyle="light-content" style="light" />
             </>
           )}
         </SafeAreaView>
