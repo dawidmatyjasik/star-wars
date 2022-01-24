@@ -20,8 +20,10 @@ const BottomTabNavigation = ({
         headerShown: false,
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "grey",
+        tabBarLabelPosition: "beside-icon",
         tabBarStyle: {
           backgroundColor: "#181818",
+          height: 50,
         },
       }}
     >

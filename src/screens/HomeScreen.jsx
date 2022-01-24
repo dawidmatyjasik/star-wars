@@ -39,7 +39,7 @@ export default function HomeScreen({
   };
 
   return (
-    <View>
+    <View style={tw`pb-[50px]`}>
       <View style={tw`flex flex-row mb-4`}>
         <TextInput
           style={tw`border border-[#797979] rounded border-solid text-white flex-grow pl-2`}
